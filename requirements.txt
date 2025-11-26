@@ -1,0 +1,4 @@
+psycopg2-binary>=2.9,<3.0
+neo4j>=5.17,<6.0
+pydantic>=1.10,<2.0
+python-dotenv>=1.0,<2.0
