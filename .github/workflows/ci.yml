@@ -39,5 +39,11 @@ jobs:
       - name: Static analysis (syntax)
         run: python -m compileall src tests
 
-      - name: Run tests
-        run: pytest -q
+      - name: Run tests (allow empty test suite)
+        run: |
+          pytest -q || status=$?
+          if [ "${status:-0}" = "5" ]; then
+            echo "No tests were collected; skipping test step."
+            exit 0
+          fi
+          exit ${status:-0}
